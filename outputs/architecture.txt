@@ -1,0 +1,67 @@
+Here is the comprehensive system architecture diagram using Mermaid syntax:
+
+```mermaid
+sequenceDiagram
+    participant User as "User"
+    participant API as "API Gateway"
+    participant TaskManager as "Task Manager"
+    participant CourseManager as "Course Manager"
+    participant SchedulingService as "Scheduling Service"
+    participant NotificationQueue as "Notification Queue"
+    participant CalendarIntegration as "Calendar Integration"
+    participant EmailIntegration as "Email Integration"
+
+    User->>API: Create, Read, Update, Delete (CRUD) tasks
+    API->>TaskManager: Handle CRUD operations for tasks
+    TaskManager->>CourseManager: Get courses related to tasks
+    CourseManager->>TaskManager: Return courses for task categorization
+    SchedulingService->>TaskManager: Generate recurring task instances
+    TaskManager->>SchedulingService: Request scheduling of recurring tasks
+
+    User->>API: Set task priority and ordering
+    API->>TaskManager: Update task priorities and orderings
+    TaskManager->>SortingAlgorithm: Sort tasks by priority
+    SortingAlgorithm->>TaskManager: Return sorted task list
+
+    User->>API: Track task completion and analytics
+    API->>TaskManager: Generate task completion statistics
+    TaskManager->>ReportingModule: Request reporting of task completion data
+    ReportingModule->>TaskManager: Return task completion statistics
+
+    User->>API: Filter and search tasks
+    API->>LuceneSearch: Search for tasks using filters and queries
+    LuceneSearch->>API: Return filtered and searched task results
+
+    User->>API: Manage user profile and preferences
+    API->>UserProfileManager: Update user profiles and preferences
+    UserProfileManager->>TaskManager: Update user profile information
+
+    API->>NotificationQueue: Send notifications for approaching deadlines
+    NotificationQueue->>SchedulingService: Schedule notification sending
+    SchedulingService->>API: Send notifications to users
+
+    User->>API: Integrate with calendar and email services
+    API->>CalendarIntegration: Integrate with calendar service (e.g., Google Calendar)
+    API->>EmailIntegration: Integrate with email client (e.g., Outlook)
+```
+
+Here is the detailed explanation of each component and its purpose:
+
+1. **User**: The user interacts with the system through various interfaces, such as the web interface or mobile app.
+2. **API Gateway** (`API`): Acts as an entry point for all requests from users. It handles CRUD operations, authentication, and routing to other components.
+3. **Task Manager** (`TaskManager`): Responsible for managing tasks, including creating, reading, updating, and deleting (CRUD) operations. It also handles task categorization by course and recurring task scheduling.
+4. **Course Manager** (`CourseManager`): Manages courses related to tasks, providing the necessary information for task categorization.
+5. **Scheduling Service** (`SchedulingService`): Generates recurring task instances based on user-defined frequencies and schedules notifications for approaching deadlines.
+6. **Notification Queue** (`NotificationQueue`): Manages notification sending, ensuring that notifications are sent in a timely manner.
+7. **Calendar Integration** (`CalendarIntegration`): Integrates with calendar services (e.g., Google Calendar) to provide seamless task management.
+8. **Email Integration** (`EmailIntegration`): Integrates with email clients (e.g., Outlook) to provide email-based notifications and reminders.
+
+The system architecture is designed using a microservices architecture, where each component has a specific responsibility and communicates with other components through well-defined interfaces. This allows for scalability, flexibility, and maintainability of the system.
+
+Justification for architectural decisions:
+
+* Using a microservices architecture allows for better scalability, as each component can be scaled independently.
+* Separating concerns by using distinct components (e.g., Task Manager, Course Manager) improves maintainability and reduces complexity.
+* Implementing scheduling and notification services separately from the task management service ensures that these critical functions are handled reliably and efficiently.
+
+This system architecture provides a solid foundation for building a comprehensive software system that meets the requirements specified.

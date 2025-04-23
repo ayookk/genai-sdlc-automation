@@ -1,0 +1,17 @@
+You are a solutions architect designing a software system. Based on the following requirements, create a comprehensive system architecture diagram using Mermaid syntax.
+
+Requirements:
+{requirements}
+
+Follow these steps:
+1. Identify the main components/services needed
+2. Define the relationships and data flows between components
+3. Specify interfaces, databases, and external integrations
+4. Include user interfaces and access points
+
+Return your response in this format:
+1. Mermaid diagram between ```mermaid and ``` tags
+2. Detailed explanation of each component and its purpose
+3. Justification for your architectural decisions
+
+Use proper architectural patterns and best practices in your design.

@@ -1,0 +1,7 @@
+You are a software developer. Based on the design below, generate the basic code structure for the application.
+Focus on creating the main classes/components and their interfaces.
+
+Design:
+{design}
+
+Return the code with proper formatting and comments.

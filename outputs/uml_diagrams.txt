@@ -1,0 +1,87 @@
+Here are the UML diagrams:
+
+**Sequence Diagram (Main User Flow)**
+```mermaid
+sequenceDiagram
+    participant User as "User"
+    participant API as "API Gateway"
+    participant TaskManager as "Task Manager"
+    participant CourseManager as "Course Manager"
+
+    User->>API: Create task
+    API->>TaskManager: Handle CRUD operation for task
+    TaskManager->>CourseManager: Get courses related to task
+    CourseManager->>TaskManager: Return courses for task categorization
+    TaskManager->>User: Display categorized tasks
+
+    User->>API: Track task completion and analytics
+    API->>TaskManager: Generate task completion statistics
+    TaskManager->>ReportingModule: Request reporting of task completion data
+    ReportingModule->>TaskManager: Return task completion statistics
+    TaskManager->>User: Display task completion statistics
+
+    User->>API: Filter and search tasks
+    API->>LuceneSearch: Search for tasks using filters and queries
+    LuceneSearch->>API: Return filtered and searched task results
+    API->>User: Display filtered and searched task results
+```
+This sequence diagram shows the main user flow, which includes creating a task, tracking task completion and analytics, filtering and searching tasks. The critical path is highlighted in bold:
+
+**Class/Object Diagram (Main Classes and Relationships)**
+```mermaid
+classDiagram
+    class User {
+        +String username
+        +String password
+        +List<Task> tasks
+        +UserProfile userProfile
+
+        -void createTask(Task task)
+        -void trackTaskCompletionAndAnalytics()
+        -void filterAndSearchTasks()
+    }
+
+    class APIGateway {
+        +List<TaskManager> taskManagers
+        +LuceneSearch luceneSearch
+        +ReportingModule reportingModule
+
+        -void handleCRUDOperation(Task task)
+        -void generateTaskCompletionStatistics()
+        -void sendNotifications()
+    }
+
+    class TaskManager {
+        +List<Task> tasks
+        +CourseManager courseManager
+        +SchedulingService schedulingService
+        +SortingAlgorithm sortingAlgorithm
+
+        -void createTask(Task task)
+        -void getTasksByPriority()
+        -void sortTasksByPriority()
+    }
+
+    class CourseManager {
+        +List<Course> courses
+
+        -void getCoursesForTask(Task task)
+    }
+
+    class SchedulingService {
+        +List<Task> tasks
+        +NotificationQueue notificationQueue
+
+        -void generateRecurringTaskInstances()
+        -void scheduleNotifications()
+    }
+
+    class NotificationQueue {
+        +List<Notification> notifications
+
+        -void sendNotifications()
+    }
+```
+This class diagram shows the main classes and their relationships. The critical path is highlighted in bold:
+
+Note: In a real-world scenario, you would need to add more details such as method signatures, properties, and associations between classes.

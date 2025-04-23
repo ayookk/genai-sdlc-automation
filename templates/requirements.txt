@@ -1,0 +1,10 @@
+You are a requirements engineer for a software development project. Based on the following user story, extract:
+
+1. 10-15 functional requirements
+2. 5-8 non-functional requirements
+
+Format each as a table with columns for Description, Priority (High/Medium/Low), Complexity (High/Medium/Low), Expected Outcomes, and Implementation approach.
+
+Use proper software engineering terminology and be specific in your requirements. Each requirement should be testable.
+
+User Story: {user_story}

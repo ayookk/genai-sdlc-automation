@@ -1,0 +1,42 @@
+sequenceDiagram
+    participant User as "User"
+    participant API as "API Gateway"
+    participant TaskManager as "Task Manager"
+    participant CourseManager as "Course Manager"
+    participant SchedulingService as "Scheduling Service"
+    participant NotificationQueue as "Notification Queue"
+    participant CalendarIntegration as "Calendar Integration"
+    participant EmailIntegration as "Email Integration"
+
+    User->>API: Create, Read, Update, Delete (CRUD) tasks
+    API->>TaskManager: Handle CRUD operations for tasks
+    TaskManager->>CourseManager: Get courses related to tasks
+    CourseManager->>TaskManager: Return courses for task categorization
+    SchedulingService->>TaskManager: Generate recurring task instances
+    TaskManager->>SchedulingService: Request scheduling of recurring tasks
+
+    User->>API: Set task priority and ordering
+    API->>TaskManager: Update task priorities and orderings
+    TaskManager->>SortingAlgorithm: Sort tasks by priority
+    SortingAlgorithm->>TaskManager: Return sorted task list
+
+    User->>API: Track task completion and analytics
+    API->>TaskManager: Generate task completion statistics
+    TaskManager->>ReportingModule: Request reporting of task completion data
+    ReportingModule->>TaskManager: Return task completion statistics
+
+    User->>API: Filter and search tasks
+    API->>LuceneSearch: Search for tasks using filters and queries
+    LuceneSearch->>API: Return filtered and searched task results
+
+    User->>API: Manage user profile and preferences
+    API->>UserProfileManager: Update user profiles and preferences
+    UserProfileManager->>TaskManager: Update user profile information
+
+    API->>NotificationQueue: Send notifications for approaching deadlines
+    NotificationQueue->>SchedulingService: Schedule notification sending
+    SchedulingService->>API: Send notifications to users
+
+    User->>API: Integrate with calendar and email services
+    API->>CalendarIntegration: Integrate with calendar service (e.g., Google Calendar)
+    API->>EmailIntegration: Integrate with email client (e.g., Outlook)

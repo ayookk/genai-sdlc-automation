@@ -1,0 +1,22 @@
+sequenceDiagram
+    participant User as "User"
+    participant API as "API Gateway"
+    participant TaskManager as "Task Manager"
+    participant CourseManager as "Course Manager"
+
+    User->>API: Create task
+    API->>TaskManager: Handle CRUD operation for task
+    TaskManager->>CourseManager: Get courses related to task
+    CourseManager->>TaskManager: Return courses for task categorization
+    TaskManager->>User: Display categorized tasks
+
+    User->>API: Track task completion and analytics
+    API->>TaskManager: Generate task completion statistics
+    TaskManager->>ReportingModule: Request reporting of task completion data
+    ReportingModule->>TaskManager: Return task completion statistics
+    TaskManager->>User: Display task completion statistics
+
+    User->>API: Filter and search tasks
+    API->>LuceneSearch: Search for tasks using filters and queries
+    LuceneSearch->>API: Return filtered and searched task results
+    API->>User: Display filtered and searched task results

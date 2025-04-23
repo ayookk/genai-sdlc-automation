@@ -1,0 +1,52 @@
+classDiagram
+    class User {
+        +String username
+        +String password
+        +List<Task> tasks
+        +UserProfile userProfile
+
+        -void createTask(Task task)
+        -void trackTaskCompletionAndAnalytics()
+        -void filterAndSearchTasks()
+    }
+
+    class APIGateway {
+        +List<TaskManager> taskManagers
+        +LuceneSearch luceneSearch
+        +ReportingModule reportingModule
+
+        -void handleCRUDOperation(Task task)
+        -void generateTaskCompletionStatistics()
+        -void sendNotifications()
+    }
+
+    class TaskManager {
+        +List<Task> tasks
+        +CourseManager courseManager
+        +SchedulingService schedulingService
+        +SortingAlgorithm sortingAlgorithm
+
+        -void createTask(Task task)
+        -void getTasksByPriority()
+        -void sortTasksByPriority()
+    }
+
+    class CourseManager {
+        +List<Course> courses
+
+        -void getCoursesForTask(Task task)
+    }
+
+    class SchedulingService {
+        +List<Task> tasks
+        +NotificationQueue notificationQueue
+
+        -void generateRecurringTaskInstances()
+        -void scheduleNotifications()
+    }
+
+    class NotificationQueue {
+        +List<Notification> notifications
+
+        -void sendNotifications()
+    }

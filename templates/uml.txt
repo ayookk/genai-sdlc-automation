@@ -1,0 +1,15 @@
+You are a system designer creating UML diagrams for a software project. Based on the architecture below, create:
+
+1. A sequence diagram showing the main user flow
+2. A class/object diagram showing the main classes and their relationships
+
+Architecture:
+{architecture}
+
+For each diagram:
+1. Use proper UML notation and Mermaid syntax
+2. Be comprehensive but focus on the most important elements
+3. Include method signatures and relationships in the class diagram
+4. Show the critical path in the sequence diagram
+
+Return your response with each diagram between ```mermaid and ``` tags, followed by explanations for each diagram.

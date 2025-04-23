@@ -4,5 +4,13 @@
 #    python3 -m pip install --break-system-packages -r requirements.txt
 
 requests>=2.28.0
+python-dotenv>=0.21.0
 
+# Visualization libraries
+graphviz>=0.20.1
+matplotlib>=3.6.0
+pymermaid>=0.0.2
+
+# Optional - for web interface
+flask>=2.2.2
 
